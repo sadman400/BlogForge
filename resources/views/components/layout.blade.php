@@ -9,7 +9,7 @@
 </head>
 <body class="bg-gray-800 container">
 
-    <header class=" text-white p-4 mt-4 mb-4 sticky top-0 z-10">
+    <header class=" text-white p-4 mt-4 mb-4 top-0 z-10">
         <nav class="flex justify-between">
             <a href="{{ route('posts.index') }}" class="hover:bg-gray-600 bg-gray-700 px-4 py-2 rounded-md transition">Home</a>
 

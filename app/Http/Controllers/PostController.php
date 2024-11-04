@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -12,7 +13,8 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
+
         return view('pages.home', ['posts' => $posts]);
     }
 
@@ -21,7 +23,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $userPost = $request->validate([
+            'title' => ['required', 'max:255'],
+            'body' => ['required', 'max:255'],
+        ]);
+
+        Auth::user()->posts()->create($userPost);
+
+        return back()->with('success', 'Post created successfully!');
     }
 
     /**
