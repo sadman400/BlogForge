@@ -21,7 +21,7 @@ class AuthController extends Controller
         // login
         Auth::login($userInfo);
         // returning our function
-        return redirect()->route('home');
+        return redirect()->route('posts.index');
     }
 
 

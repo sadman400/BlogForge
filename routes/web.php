@@ -11,6 +11,7 @@ Route::redirect('/', '/posts');
 // resources controller
 Route::resource('posts', PostController::class);
 
+Route::get('{user}/posts', [AdminController::class, 'userPosts'])->name('user.posts');
 
 
 // register & login routes
