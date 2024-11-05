@@ -20,6 +20,6 @@ class AdminController extends Controller
 
         $posts = $user->posts()->latest()->paginate(3);
 
-        return view('admin.posts', ['posts' => $posts]);
+        return view('admin.posts', ['posts' => $posts, 'user' => $user]);
     }
 }
