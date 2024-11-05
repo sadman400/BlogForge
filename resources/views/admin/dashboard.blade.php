@@ -18,6 +18,11 @@
 
             @if (session('success'))
                 <p class="text-yellow-600 mb-0 mt-1">{{ session('success') }}</p>
+            @elseif (session('delete'))
+                <p class="text-yellow-600 mb-0 mt-1">{{ session('delete') }}</p>
+
+            @elseif (session('updated'))
+                <p class="text-yellow-600 mb-0 mt-1">{{ session('updated') }}</p>
             @endif
 
             {{-- submit button  --}}
@@ -29,7 +34,21 @@
     <h1 class="text-3xl mt-10 font-bold text-white">Your Latest Post's</h1>
 
     @foreach ( $posts as $post)
-        <x-PostCard :post="$post" />
+        <x-PostCard :post="$post">
+
+            <div class="flex justify-end">
+                {{-- edit post button  --}}
+                <a href="{{route('posts.edit', $post->id)}}" class="py-2 px-4 bg-green-500 rounded-md text-white mr-2">Edit</a>
+
+                {{-- delete post button --}}
+                <form action="{{route('posts.destroy', $post)}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button class="py-2 px-4 bg-red-500 rounded-md text-white">delete</button>
+                </form>
+            </div>
+
+        </x-PostCard>
     @endforeach
 
     <div class="mt-4">

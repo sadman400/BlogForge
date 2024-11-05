@@ -12,4 +12,9 @@
         <a href="{{ route('posts.show', $post->id)}}" class="text-blue-600">Read more</a>
     @endif
 
+
+    <div>
+        {{$slot}}
+    </div>
+
 </div>
