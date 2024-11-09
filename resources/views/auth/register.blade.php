@@ -1,45 +1,45 @@
 <x-layout>
+    <h1 class="text-4xl text-center font-bold text-white mb-8">Registration</h1>
 
-    <h1 class="text-3xl text-center font-bold text-white">Registration</h1>
-
-    <form method="POST" action="{{ route('register') }}" class="mt-4 max-w-md mx-auto bg-gray-700 p-8 rounded-lg">
+    <form method="POST" action="{{ route('register') }}" class="mt-4 max-w-md mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
         @csrf
 
-        {{-- username  --}}
-        <div class="mb-4 flex justify-center flex-col">
-            <label for="username" class="text-white mb-3">Username</label>
-            <input type="text" name="username" class="text-black w-full rounded-md px-4 py-2" placeholder="Enter your username" id="username" value="{{ old('username') }}">
+        {{-- Username --}}
+        <div class="mb-6">
+            <label for="username" class="text-white mb-2 block text-lg">Username</label>
+            <input type="text" name="username" id="username" class="w-full bg-gray-900 text-white border border-gray-600 rounded-md px-4 py-3 focus:ring-2 focus:ring-green-500" placeholder="Enter your username" value="{{ old('username') }}">
             @error('username')
-                <p class="text-yellow-600 mb-0 mt-1">{{$message}}</p>
+                <p class="text-yellow-600 mt-1 text-sm">{{$message}}</p>
             @enderror
         </div>
 
-        {{-- email  --}}
-        <div class="mb-4 flex justify-center flex-col">
-            <label for="email" class="text-white mb-3">Email</label>
-            <input type="email" name="email" id="email" class="text-black w-full rounded-md px-4 py-2" placeholder="Enter your email" value="{{ old('email') }}">
+        {{-- Email --}}
+        <div class="mb-6">
+            <label for="email" class="text-white mb-2 block text-lg">Email</label>
+            <input type="email" name="email" id="email" class="w-full bg-gray-900 text-white border border-gray-600 rounded-md px-4 py-3 focus:ring-2 focus:ring-green-500" placeholder="Enter your email" value="{{ old('email') }}">
             @error('email')
-                <p class="text-yellow-600 mb-0 mt-1">{{$message}}</p>
+                <p class="text-yellow-600 mt-1 text-sm">{{$message}}</p>
             @enderror
         </div>
 
-        {{-- password  --}}
-        <div class="mb-4 flex justify-center flex-col">
-            <label for="password" class="text-white mb-3">Password</label>
-            <input type="password" name="password" id="password" class="text-black w-full rounded-md px-4 py-2" placeholder="Enter your password">
+        {{-- Password --}}
+        <div class="mb-6">
+            <label for="password" class="text-white mb-2 block text-lg">Password</label>
+            <input type="password" name="password" id="password" class="w-full bg-gray-900 text-white border border-gray-600 rounded-md px-4 py-3 focus:ring-2 focus:ring-green-500" placeholder="Enter your password">
             @error('password')
-                <p class="text-yellow-600 mb-0 mt-1">{{$message}}</p>
+                <p class="text-yellow-600 mt-1 text-sm">{{$message}}</p>
             @enderror
         </div>
 
-        {{-- confirm password  --}}
-        <div class="mb-4 flex justify-center flex-col">
-            <label for="password_confirmation" class="text-white mb-3">Confirm Password</label>
-            <input type="password" class="text-black w-full rounded-md px-4 py-2" placeholder="Confirm your password" name="password_confirmation" id="password_confirmation">
+        {{-- Confirm Password --}}
+        <div class="mb-6">
+            <label for="password_confirmation" class="text-white mb-2 block text-lg">Confirm Password</label>
+            <input type="password" name="password_confirmation" id="password_confirmation" class="w-full bg-gray-900 text-white border border-gray-600 rounded-md px-4 py-3 focus:ring-2 focus:ring-green-500" placeholder="Confirm your password">
         </div>
 
-        <button type="submit" class="bg-blue-500 w-full hover:bg-blue-600 transition text-white px-4 mt-4 text-center py-2 rounded-md">Register</button>
-
+        {{-- Submit Button --}}
+        <button type="submit" class="bg-green-600 hover:bg-green-700 transition duration-300 text-white w-full py-3 rounded-md mt-4">
+            Register
+        </button>
     </form>
-
 </x-layout>
